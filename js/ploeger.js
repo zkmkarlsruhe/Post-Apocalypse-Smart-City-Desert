@@ -2,20 +2,19 @@
 var camera, scene, renderer, controls, container, video;
 
 function init() {
-	camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1100);
+	camera = new THREE.PerspectiveCamera(75,
+		window.innerWidth/window.innerHeight, 1, 1100);
   controls = new THREE.DeviceOrientationControls(camera);
 	camera.target = new THREE.Vector3(0, 0, 0);
 
 	scene = new THREE.Scene();
-	// Define the geomtry holding the video
 	let geometry = new THREE.SphereBufferGeometry(500, 60, 40);
-	// correctly orient the surface by scaling inverting it
 	geometry.scale(-1, 1, 1);
 
 	video = document.createElement('video');
-	video.crossOrigin 					= 'anonymous';
-	video.width, video.height  	= 1080, 1920;
-	video.loop, video.muted 		= true, true;
+	video.crossOrigin 						= 'anonymous';
+	video.width, 	video.height  	= 1080, 1920;
+	video.loop, 	video.muted 		= true, true;
 	video.setAttribute('webkit-playsinline', 'webkit-playsinline');
 	video.setAttribute('playsinline', '');
 	video.src = 'media/' + getParams(location.href).id + '.mp4';
