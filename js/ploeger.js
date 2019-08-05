@@ -1,9 +1,8 @@
-
-var camera, scene, renderer, controls, container, video;
+var camera, scene, renderer, controls, video;
 
 function init() {
 	camera = new THREE.PerspectiveCamera(75,
-		window.innerWidth/window.innerHeight, 1, 1100);
+		window.innerWidth / window.innerHeight, 1, 1100);
   controls = new THREE.DeviceOrientationControls(camera);
 	camera.target = new THREE.Vector3(0, 0, 0);
 
@@ -58,3 +57,22 @@ function getParams(url) {
 	}
 	return params;
 };
+
+function openFullscreen() {
+		let container = document.getElementById('container');
+		if (container.requestFullscreen) container.requestFullscreen();
+		else if (container.mozRequestFullScreen) container.mozRequestFullScreen();
+		else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+		else if (container.msRequestFullscreen) container.msRequestFullscreen();
+		container.style.width = '100%';
+		container.style.height = '100%';
+}
+
+function run() {
+	console.debug('Starting...');
+	video.play();
+	document.getElementById('Step1Message').remove();
+	document.getElementById('container').style.display = 'block';
+	openFullscreen();
+	animate();
+}

@@ -20,23 +20,20 @@
 				device. A City 3.0 vision will appear.</p>
 	    <p id="desc2" class="justify">Seasons of Media Arts, 2019</p>
 			<hr>
-			<h3 id='start_button'> >>START<< </h3>
-	    <p id="version" style="font-size:6px">Version: 1.0</p>
+			<h3 id='start_button' class="button">START</h3>
+	    <p id="version" style="font-size:6px">Version: 1.1</p>
+			<img src="media/zkm.png" id ="zkmLogo" alt="Logo des ZKM Karlsruhe">
 	  </div>
 
 		<div id="container"></div>
 		<script type="text/javascript">
 			window.onload = function() {
+				// window.addEventListener("deviceorientation", handleOrientation, true);
+				// function handleOrientation(event) {
+				//   // Do stuff with the new orientation data
+				// }
 				init();
-				document.getElementById('start_button').addEventListener('click', () => { video.play(); })
 				document.getElementById('start_button').addEventListener('click', run);
-			}
-
-			function run() {
-				console.log('Starting...');
-				document.getElementById('Step1Message').remove();
-				document.getElementById('container').style.display = 'block';
-				animate();
 			}
 		</script>
 	</body>
