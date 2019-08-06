@@ -3,20 +3,23 @@ var camera, scene, renderer, controls, video;
 function init() {
 	camera = new THREE.PerspectiveCamera(75,
 		window.innerWidth / window.innerHeight, 1, 1100);
-  controls = new THREE.DeviceOrientationControls(camera);
 	camera.target = new THREE.Vector3(0, 0, 0);
+  controls = new THREE.DeviceOrientationControls(camera);
 
 	scene = new THREE.Scene();
 	let geometry = new THREE.SphereBufferGeometry(500, 60, 40);
 	geometry.scale(-1, 1, 1);
 
 	video = document.createElement('video');
-	video.crossOrigin 						= 'anonymous';
-	video.width, 	video.height  	= 1080, 1920;
-	video.loop, 	video.muted 		= true, true;
+	video.crossOrigin = 'anonymous';
+	video.width = 1920;
+	video.height = 1080;
+	video.loop = true;
+	video.muted = false;
+	video.volume = 1;
 	video.setAttribute('webkit-playsinline', 'webkit-playsinline');
 	video.setAttribute('playsinline', '');
-	video.src = 'media/' + getParams(location.href).id + '.mp4';
+	video.src = `media/${getParams(location.href).id}.mp4`;
 
 	let texture = new THREE.VideoTexture(video);
 	let material = new THREE.MeshBasicMaterial({map: texture});
