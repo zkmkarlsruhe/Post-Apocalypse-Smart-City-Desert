@@ -73,9 +73,9 @@ function openFullscreen() {
 
 function run() {
 	console.debug('Starting...');
+	openFullscreen();
 	video.play();
 	document.getElementById('Step1Message').remove();
 	document.getElementById('container').style.display = 'block';
-	openFullscreen();
 	animate();
 }
