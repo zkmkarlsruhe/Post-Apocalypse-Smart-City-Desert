@@ -1,6 +1,7 @@
 var camera, scene, renderer, controls, video;
 
 function init() {
+	// Initialize camera and renderer.
 	camera = new THREE.PerspectiveCamera(75,
 		window.innerWidth / window.innerHeight, 1, 1100);
 	camera.target = new THREE.Vector3(0, 0, 0);
@@ -24,6 +25,7 @@ function init() {
 	let texture = new THREE.VideoTexture(video);
 	let material = new THREE.MeshBasicMaterial({map: texture});
 	scene.add(new THREE.Mesh(geometry, material));
+	console.debug('OK: Mesh with video added to the scene');
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -31,12 +33,14 @@ function init() {
 	document.getElementById('container').appendChild(renderer.domElement);
 	window.addEventListener('resize', onWindowResize, false);
 	window.addEventListener('orientationchange', onWindowResize, false);
+	console.debug('OK: Renderer inititialized');
 }
 
 function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
+	console.debug('Resize!');
 }
 
 function animate() {
